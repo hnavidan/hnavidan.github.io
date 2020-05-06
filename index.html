@@ -1,8 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="UTF-8" />
   <title>Twitter EGO Network</title>
+  <<!-- CSS -->
+  <style>
+    #topBtn {
+      display: none;
+      position: fixed; 
+      bottom: 20px;
+      right: 30px;
+      z-index: 99; 
+      border: none;
+      outline: none; 
+      background-color: black; 
+      color: white; 
+      cursor: pointer; 
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    #topBtn:hover {
+      background-color: #555; /* Add a dark-grey background on hover */
+    }
+  </style>
 </head>
 <body>
   <h1>Twitter EGO Network</h1>
@@ -11,6 +34,12 @@
   <h3>Number of Users: 4282</h3>
   <h3>Number of Connections: 7544</h3>
   <h5>If you are looking for yourself just search (using CTRL+F on PC or "Find in page" on Smarthones) your twitter's username. <h5>
+  
+  <div class="searchbar">
+  <input type="text" placeholder="Search.." id="searchbox">
+  <button type="submit" id="search">Go</button>
+  </div>
+  <button onclick="topFunction()" id="topBtn" title="Go to top">Return</button>
   <!-- SVG code -->
 
 <svg contentScriptType="text/ecmascript" width="10648.039"
@@ -64429,5 +64458,33 @@
         </text>
     </g>
 </svg>
+<script>
+  $('#search').click(function() {
+    var val = $('#searchbox').val();
+    var el = $('text:contains(' + val + ')');
+    $('html, body').animate({
+      scrollTop: el.offset().top - $(window).height()/2,
+      scrollLeft: el.offset().left - $(window).width()/2
+    }, 800);
+  });
+</script>
+<script>
+    mybutton = document.getElementById("topBtn");
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.body.scrollLeft = 0;
+      document.documentElement.scrollTop = 0; 
+      document.documentElement.scrollLeft = 0; 
+    }
+</script>
 </body>
 </html>
